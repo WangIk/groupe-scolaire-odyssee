@@ -1,21 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Work+Sans:wght@300;400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary: #0056A6;
+  --primary-dark: #004385;
+  --primary-light: #0067c7;
+  --text-primary: #1A1A1A;
+  --text-light: #FFFFFF;
+  --background: #F5F5F5;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Reset et fix pour le scroll horizontal */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+  font-family: 'Work Sans', sans-serif;
+  @apply text-gray-900 bg-background antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Oswald', sans-serif;
+}
+
+/* Classes utilitaires personnalisées */
+@layer components {
+  .container {
+    @apply relative mx-auto px-4;
+    max-width: min(100%, 1280px);
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition-all duration-300;
+    white-space: nowrap;
+  }
+
+  .btn-primary {
+    background-color: var(--primary);
+    color: var(--text-light);
+  }
+
+  .btn-primary:hover {
+    background-color: var(--primary-dark);
+  }
+
+  .btn-outline {
+    @apply border-2;
+    color: var(--text-light);
+    border-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+  }
+
+  .btn-outline:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+
+  .text-hero {
+    color: var(--text-light);
+  }
+
+  .text-hero-secondary {
+    color: rgba(255, 255, 255, 0.9);
+  }
+}
+
+/* Animations personnalisées */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Styles pour Swiper améliorés */
+.swiper-fade.swiper-free-mode .swiper-slide {
+  transition-timing-function: ease-out;
+}
+
+.swiper-fade .swiper-slide {
+  pointer-events: none;
+  transition-property: opacity;
+  transition-duration: 800ms;
+}
+
+.swiper-fade .swiper-slide-active {
+  pointer-events: auto;
+}
+
+.swiper-slide-active .scale-up {
+  transform: scale(1.1);
+  transition: transform 8s ease-out;
+}
+
+/* Styles de scrollbar personnalisés */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+/* Styles de sélection de texte */
+::selection {
+  background: var(--primary);
+  color: var(--text-light);
 }
