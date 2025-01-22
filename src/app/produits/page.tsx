@@ -155,7 +155,7 @@ const ProductsPage = () => {
               </motion.div>
             ) : (
               <>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
                   {currentProducts.map((product, index) => (
                     <motion.div
                       key={product.id}
@@ -163,10 +163,10 @@ const ProductsPage = () => {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.1 }}
                       whileHover={{ y: -5 }}
-                      className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
+                      className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col h-full"
                     >
-                      <Link href={`/produits/${product.id}`} className="block">
-                        <div className="relative h-64 w-full overflow-hidden">
+                      <Link href={`/produits/${product.id}`} className="block flex-1">
+                        <div className="relative aspect-[4/3] w-full overflow-hidden">
                           <Image
                             src={product.image}
                             alt={product.name}
@@ -183,14 +183,14 @@ const ProductsPage = () => {
                           </div>
                         </div>
 
-                        <div className="p-6">
+                        <div className="p-6 flex flex-col flex-1">
                           <h2 className="font-oswald text-2xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors">
                             {product.name}
                           </h2>
-                          <p className="text-gray-600 text-sm mb-4 line-clamp-2 font-work-sans">
+                          <p className="text-gray-600 text-sm mb-4 line-clamp-2 font-work-sans flex-1">
                             {product.description}
                           </p>
-                          <div className="flex justify-between items-center">
+                          <div className="flex justify-between items-center mt-auto">
                             <span className="text-2xl font-bold text-primary">
                               {product.price} DH
                             </span>
