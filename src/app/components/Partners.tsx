@@ -46,7 +46,7 @@ const Partners = () => {
     <section className="py-16 sm:py-24 bg-gradient-to-b from-gray-900 to-gray-800 text-white relative overflow-hidden">
       {/* Effet de fond amélioré */}
       <div className="absolute inset-0">
-      <div className="absolute inset-0 bg-[url('/assets/grid.png')] opacity-5" />
+        <div className="absolute inset-0 bg-[url('/assets/grid.png')] opacity-5" />
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent" />
       </div>
       
@@ -63,7 +63,7 @@ const Partners = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="inline-block bg-primary/20 text-primary px-6 py-2 rounded-full text-sm font-semibold backdrop-blur-sm"
+            className="inline-block bg-primary/30 text-white px-6 py-2 rounded-full text-sm font-semibold backdrop-blur-sm shadow-lg"
           >
             Nos Partenaires
           </motion.span>
@@ -72,7 +72,7 @@ const Partners = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            className="text-4xl sm:text-5xl font-oswald font-bold mt-6 mb-6 text-white tracking-wide drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]"
+            className="text-4xl sm:text-5xl font-oswald font-bold mt-6 mb-6 text-white tracking-wide drop-shadow-lg"
           >
             Ils nous font confiance
           </motion.h2>
@@ -81,7 +81,7 @@ const Partners = () => {
             whileInView={{ width: "5rem" }}
             viewport={{ once: true }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="h-1.5 bg-primary mx-auto rounded-full"
+            className="h-1.5 bg-primary mx-auto rounded-full shadow-lg"
           />
         </motion.div>
 
@@ -97,10 +97,10 @@ const Partners = () => {
                 whileHover={{ y: -5, transition: { duration: 0.2 } }}
                 className="group"
               >
-                <div className={`relative rounded-2xl p-4 sm:p-6 transition-all duration-300 h-full
+                <div className={`relative rounded-2xl p-4 sm:p-6 transition-all duration-300 h-full shadow-xl
                   ${partner.darkMode 
-                    ? 'bg-white/5 backdrop-blur-sm hover:bg-white/10 border border-white/5 hover:border-white/20' 
-                    : 'bg-white/90 hover:bg-white border border-white/20 hover:border-white/30'}`}
+                    ? 'bg-gray-900/80 backdrop-blur-sm hover:bg-gray-900/90 border border-white/10 hover:border-white/20' 
+                    : 'bg-white/95 hover:bg-white border border-white/20 hover:border-white/30'}`}
                 >
                   <div className={`flex items-center justify-center h-24 sm:h-28 mb-4 sm:mb-6 
                     ${!partner.darkMode && 'rounded-lg overflow-hidden'}`}
@@ -111,20 +111,20 @@ const Partners = () => {
                         alt={partner.name}
                         fill
                         className={`object-contain transition-all duration-500
-                          ${partner.darkMode ? 'grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100' : 'grayscale-0'}`}
+                          ${partner.darkMode ? 'grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100' : 'grayscale-0'}`}
                         sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 20vw"
                       />
                     </div>
                   </div>
                   <div className="text-center transform transition-all duration-300">
                     <h3 className={`font-oswald text-lg sm:text-xl font-bold mb-2 sm:mb-3 
-                      ${partner.darkMode ? 'text-white group-hover:text-primary' : 'text-gray-900 group-hover:text-primary'}`}
+                      ${partner.darkMode ? 'text-white/90 group-hover:text-primary' : 'text-gray-800 group-hover:text-primary'}`}
                     >
                       {partner.name}
                     </h3>
                     <p className={`text-sm font-work-sans opacity-0 group-hover:opacity-100 transition-all duration-300 
                       transform translate-y-2 group-hover:translate-y-0 line-clamp-2
-                      ${partner.darkMode ? 'text-gray-300' : 'text-gray-600'}`}
+                      ${partner.darkMode ? 'text-white/80' : 'text-gray-700'}`}
                     >
                       {partner.description}
                     </p>
@@ -141,7 +141,7 @@ const Partners = () => {
             transition={{ delay: 0.5 }}
             className="text-center mt-16 sm:mt-20"
           >
-            <p className="text-base sm:text-lg font-work-sans text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg font-work-sans text-white/90 max-w-3xl mx-auto leading-relaxed">
               Nous collaborons avec les plus grandes marques mondiales pour vous garantir 
               des produits de qualité supérieure et un service d'excellence inégalé.
             </p>

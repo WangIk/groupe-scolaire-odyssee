@@ -5,12 +5,37 @@
 @tailwind utilities;
 
 :root {
+  /* Couleurs principales */
   --primary: #0056A6;
-  --primary-dark: #004385;
-  --primary-light: #0067c7;
-  --text-primary: #1A1A1A;
+  --primary-dark: #003B73;
+  --primary-light: #1E88E5;
+  
+  /* Textes */
+  --text-primary: #2D3748;
+  --text-secondary: #718096;
   --text-light: #FFFFFF;
-  --background: #F5F5F5;
+  
+  /* Arrière-plans */
+  --background: #F7FAFC;
+  --background-alt: #EDF2F7;
+  --background-dark: #2D3748;
+  --background-gradient-start: #2D3748;
+  --background-gradient-end: #1A202C;
+  
+  /* Cartes et composants */
+  --background-card: #FFFFFF;
+  --background-card-hover: #F7FAFC;
+  --border-color: #E2E8F0;
+
+  /* Accents */
+  --accent-1: #F6AD55;
+  --accent-2: #4FD1C5;
+  --accent-3: #9F7AEA;
+  
+  /* États */
+  --success: #48BB78;
+  --warning: #ECC94B;
+  --error: #F56565;
 }
 
 /* Reset et fix pour le scroll horizontal */
@@ -29,11 +54,14 @@ body {
   position: relative;
   width: 100%;
   font-family: 'Work Sans', sans-serif;
-  @apply text-gray-900 bg-background antialiased;
+  color: var(--text-primary);
+  background-color: var(--background);
+  @apply antialiased;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Oswald', sans-serif;
+  color: var(--text-primary);
 }
 
 /* Classes utilitaires personnalisées */
@@ -41,6 +69,16 @@ h1, h2, h3, h4, h5, h6 {
   .container {
     @apply relative mx-auto px-4;
     max-width: min(100%, 1280px);
+  }
+
+  .section-dark {
+    background: linear-gradient(to bottom, var(--background-gradient-start), var(--background-gradient-end));
+    color: var(--text-light);
+  }
+
+  .section-light {
+    background-color: var(--background-alt);
+    color: var(--text-primary);
   }
 
   .btn {
@@ -68,12 +106,33 @@ h1, h2, h3, h4, h5, h6 {
     border-color: rgba(255, 255, 255, 0.4);
   }
 
+  .card {
+    background-color: var(--background-card);
+    border: 1px solid var(--border-color);
+    @apply rounded-xl shadow-lg hover:shadow-xl transition-all duration-300;
+  }
+
+  .card:hover {
+    background-color: var(--background-card-hover);
+  }
+
   .text-hero {
     color: var(--text-light);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   }
 
   .text-hero-secondary {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  .section-title {
+    @apply font-oswald text-4xl sm:text-5xl font-bold;
+    color: var(--text-primary);
+  }
+
+  .section-subtitle {
+    @apply font-work-sans text-lg text-gray-600;
   }
 }
 
@@ -113,7 +172,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--background);
 }
 
 ::-webkit-scrollbar-thumb {
