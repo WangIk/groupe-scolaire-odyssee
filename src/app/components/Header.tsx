@@ -39,19 +39,19 @@ const Header = () => {
         animate={{ y: 0 }}
         className={`fixed w-full z-50 transition-all duration-500 ${
           isScrolled 
-            ? 'bg-white/95 backdrop-blur-md shadow-lg py-2' 
+            ? 'bg-white/98 backdrop-blur-md shadow-lg py-2' 
             : 'bg-transparent py-4'
         }`}
       >
         <div className="container mx-auto px-4">
           <nav className="flex items-center justify-between max-w-full">
-            <Link href="/" className="flex-shrink-0 block h-12">
+            <Link href="/" className="flex-shrink-0 block h-12 sm:h-12">
               <Image
                 src="/assets/logo.png"
                 alt="Jack Industries Logo"
                 width={120}
                 height={48}
-                className={`h-full w-auto transition-all duration-300 ${
+                className={`h-8 sm:h-full w-auto transition-all duration-300 ${
                   isScrolled ? 'brightness-100' : 'brightness-0 invert'
                 }`}
                 priority
@@ -107,7 +107,7 @@ const Header = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: '100%' }}
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-              className="fixed inset-y-0 right-0 w-64 bg-white shadow-2xl z-50 md:hidden overflow-y-auto"
+              className="fixed inset-y-0 right-0 w-64 bg-primary shadow-2xl z-50 md:hidden overflow-y-auto"
             >
               <div className="p-6">
                 <div className="flex justify-end mb-8">
@@ -115,7 +115,7 @@ const Header = () => {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="p-2 rounded-lg hover:bg-gray-100"
+                    className="p-2 rounded-lg hover:bg-primary-dark text-white"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -133,7 +133,7 @@ const Header = () => {
                     <Link
                       key={item.name}
                       href={item.path}
-                      className="font-oswald text-lg text-gray-800 hover:text-primary transition-colors py-2"
+                      className="font-oswald text-lg text-white hover:text-white/80 transition-colors py-2 border-b border-white/10 last:border-0"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {item.name}

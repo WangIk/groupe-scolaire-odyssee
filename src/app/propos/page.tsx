@@ -13,7 +13,7 @@ const AboutPage = () => {
         {/* Hero Section de la page À propos */}
         <section className="relative h-[40vh] bg-gray-900">
           <Image
-            src="/assets/grid.png"
+            src="/assets/wood.jpg"
             alt="À propos de Jack Industries"
             fill
             className="object-cover opacity-50"
