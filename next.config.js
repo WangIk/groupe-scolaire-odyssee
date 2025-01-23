@@ -15,16 +15,32 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: "/(.*)", // Applique les en-têtes à toutes les routes
+        source: '/:path*',
         headers: [
           {
-            key: "Strict-Transport-Security",
-            value: "max-age=31536000; includeSubDomains; preload", // HSTS requis pour le préchargement
+            key: 'Strict-Transport-Security',
+            value: 'max-age=31536000; includeSubDomains'
           },
         ],
       },
     ];
   },
-};
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www.jackindustries.ma',
+          },
+        ],
+        destination: 'https://jackindustries.ma/:path*',
+        permanent: true,
+      },
+    ];
+  },
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
+
