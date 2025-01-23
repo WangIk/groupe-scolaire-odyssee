@@ -3,6 +3,7 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
+
         hostname: 'res.cloudinary.com',
         pathname: '/dpurgotxn/**',
       },
@@ -15,4 +16,4 @@ const nextConfig = {
 }
 
 module.exports = nextConfig
-ss
+
