@@ -3,7 +3,6 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
         hostname: 'res.cloudinary.com',
         pathname: '/dpurgotxn/**',
       },
@@ -16,4 +15,4 @@ const nextConfig = {
 }
 
 module.exports = nextConfig
-
+ss
