@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Allow: /produits/
+Allow: /categories/
+Allow: /blog/
+Allow: /contact/
+Allow: /propos/
+
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+Disallow: /*?*
+
+Sitemap: https://www.jackindustries.ma/sitemap.xml 

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { motion } from 'framer-motion';
 import { useState } from 'react';
@@ -13,11 +13,49 @@ const ContactPage = () => {
     subject: '',
     message: ''
   });
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Logique d'envoi du formulaire à implémenter
-    console.log(formData);
+    setStatus('loading');
+
+    try {
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          from: formData.email,
+          name: formData.name,
+          subject: formData.subject,
+          message: formData.message,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Erreur lors de l\'envoi du message');
+      }
+
+      setStatus('success');
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('Erreur:', error);
+      setStatus('error');
+    }
   };
 
   return (
@@ -109,8 +147,9 @@ const ContactPage = () => {
                     <input
                       type="text"
                       id="name"
+                      name="name"
                       value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-work-sans"
                       required
                     />
@@ -121,8 +160,9 @@ const ContactPage = () => {
                     <input
                       type="email"
                       id="email"
+                      name="email"
                       value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-work-sans"
                       required
                     />
@@ -133,8 +173,9 @@ const ContactPage = () => {
                     <input
                       type="text"
                       id="subject"
+                      name="subject"
                       value={formData.subject}
-                      onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                      onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-work-sans"
                       required
                     />
@@ -144,8 +185,9 @@ const ContactPage = () => {
                     <label htmlFor="message" className="block font-work-sans text-gray-700 mb-2">Message</label>
                     <textarea
                       id="message"
+                      name="message"
                       value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      onChange={handleChange}
                       rows={5}
                       className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-work-sans resize-none"
                       required
@@ -156,11 +198,24 @@ const ContactPage = () => {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     type="submit"
-                    className="w-full bg-primary text-white font-oswald text-lg py-4 rounded-lg hover:bg-primary/90 transition-colors"
+                    disabled={status === 'loading'}
+                    className={`w-full bg-primary text-white font-oswald text-lg py-4 rounded-lg hover:bg-primary/90 transition-colors ${status === 'loading' ? 'opacity-70 cursor-not-allowed' : ''}`}
                   >
-                    Envoyer le message
+                    {status === 'loading' ? 'Envoi en cours...' : 'Envoyer le message'}
                   </motion.button>
                 </form>
+
+                {status === 'success' && (
+                  <div className="mt-4 p-4 bg-green-50 text-green-700 rounded-xl">
+                    Message envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.
+                  </div>
+                )}
+
+                {status === 'error' && (
+                  <div className="mt-4 p-4 bg-red-50 text-red-700 rounded-xl">
+                    Une erreur est survenue lors de l'envoi du message. Veuillez réessayer.
+                  </div>
+                )}
               </motion.div>
             </div>
           </div>
