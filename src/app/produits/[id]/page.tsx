@@ -96,9 +96,15 @@ const ProductDetailPage = () => {
               </div>
 
               <div className="space-y-4">
-                <button className="w-full bg-primary text-white py-3 rounded-lg hover:bg-primary/90 transition-colors font-semibold text-lg">
+                {/* Le bouton redirige vers WhatsApp */}
+                <a 
+                  href="https://wa.me/212616966509" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="w-full bg-primary text-white py-3 rounded-lg hover:bg-primary/90 transition-colors font-semibold text-lg text-center"
+                >
                   Contacter pour commander
-                </button>
+                </a>
                 <p className="text-sm text-gray-500 text-center">
                   Pour plus d'informations, n'hésitez pas à nous contacter
                 </p>
@@ -112,3 +118,4 @@ const ProductDetailPage = () => {
 };
 
 export default ProductDetailPage;
+
