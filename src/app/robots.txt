@@ -1,14 +1,16 @@
 # **** robots.txt for jackindustries.ma ****
 User-agent: *
 
-# Allow main pages
+# Pages principales
 Allow: /
 Allow: /produits
+Allow: /produits/*
 Allow: /categories
+Allow: /categories/*
 Allow: /contact
 Allow: /propos
 
-# Block specific paths
+# Pages à bloquer
 Disallow: /admin/
 Disallow: /api/
 Disallow: /private/
