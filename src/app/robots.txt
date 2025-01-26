@@ -1,14 +1,21 @@
+# **** robots.txt for jackindustries.ma ****
 User-agent: *
-Allow: /
-Allow: /produits/
-Allow: /categories/
-Allow: /blog/
-Allow: /contact/
-Allow: /propos/
 
+# Allow main pages
+Allow: /
+Allow: /produits
+Allow: /categories
+Allow: /contact
+Allow: /propos
+
+# Block specific paths
 Disallow: /admin/
 Disallow: /api/
 Disallow: /private/
 Disallow: /*?*
+Disallow: /*.html$
+Disallow: /*#!
+Disallow: /cgi-sys/
 
-Sitemap: https://www.jackindustries.ma/sitemap.xml 
+# Sitemaps
+Sitemap: https://jackindustries.ma/sitemap.xml 
