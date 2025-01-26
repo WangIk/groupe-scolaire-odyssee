@@ -103,8 +103,8 @@ const ContactPage = () => {
                     </div>
                     <div>
                       <h3 className="font-oswald font-semibold text-lg">Téléphone</h3>
-                      <p className="text-gray-600 font-work-sans">+212 5 22 98 98 98</p>
-                      <p className="text-gray-600 font-work-sans">+212 6 61 61 61 61</p>
+                      <p className="text-gray-600 font-work-sans">+212 5 22 48 25 40</p>
+                      <p className="text-gray-600 font-work-sans">+212 6 16 96 65 09</p>
                     </div>
                   </div>
 
