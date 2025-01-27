@@ -191,7 +191,7 @@ const ProductsPage = () => {
                             {product.description}
                           </p>
                           <div className="flex justify-between items-center gap-4">
-                            <span className="text-sm text-gray-500 group-hover:text-primary transition-colors flex items-center gap-2">
+                            <Link href={`/produits/${product.id}`} className="text-sm text-gray-500 group-hover:text-primary transition-colors flex items-center gap-2">
                               En savoir plus
                               <svg 
                                 xmlns="http://www.w3.org/2000/svg" 
@@ -202,12 +202,11 @@ const ProductsPage = () => {
                               >
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                               </svg>
-                            </span>
+                            </Link>
                             <a
                               href="https://wa.me/212616966509"
                               target="_blank"
                               rel="noopener noreferrer"
-                              onClick={(e) => e.preventDefault()}
                               className="bg-primary text-white py-2 px-4 rounded-lg hover:bg-primary/90 transition-all duration-300 font-semibold text-center shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
                             >
                               Contacter
