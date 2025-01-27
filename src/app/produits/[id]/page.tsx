@@ -41,7 +41,7 @@ const ProductDetailPage = () => {
   if (!product) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center">
-        <h1 className="text-2xl font-bold mb-4">Produit non trouvé</h1>
+        <h1 className="text-2xl font-bold text-gray-900 mb-4">Produit non trouvé</h1>
         <Link href="/produits" className="text-primary hover:underline">
           Retour aux produits
         </Link>
@@ -55,7 +55,7 @@ const ProductDetailPage = () => {
         <div className="mb-6">
           <Link 
             href="/produits"
-            className="text-primary hover:underline flex items-center gap-2"
+            className="text-primary hover:text-primary/80 font-semibold flex items-center gap-2 transition-colors"
           >
             ← Retour aux produits
           </Link>
@@ -66,7 +66,7 @@ const ProductDetailPage = () => {
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="relative h-[400px] md:h-[500px] rounded-lg overflow-hidden"
+              className="relative h-[400px] md:h-[500px] rounded-lg overflow-hidden shadow-md"
             >
               <Image
                 src={product.image}
@@ -87,26 +87,19 @@ const ProductDetailPage = () => {
                 <h1 className="text-4xl font-oswald font-bold text-gray-900 mb-4">
                   {product.name}
                 </h1>
-                <p className="text-gray-600 text-lg mb-6">
+                <p className="text-gray-800 text-lg leading-relaxed mb-8 font-work-sans">
                   {product.description}
                 </p>
-                <div className="text-3xl font-bold text-primary mb-8">
-                  {product.price} DH
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                {/* Le bouton redirige vers WhatsApp */}
                 <a 
                   href="https://wa.me/212616966509" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="w-full bg-primary text-white py-3 rounded-lg hover:bg-primary/90 transition-colors font-semibold text-lg text-center"
+                  className="block w-full bg-primary text-white py-4 rounded-lg hover:bg-primary/90 transition-all duration-300 font-semibold text-lg text-center shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
                 >
                   Contacter pour commander
                 </a>
-                <p className="text-sm text-gray-500 text-center">
-                  Pour plus d'informations, n'hésitez pas à nous contacter
+                <p className="text-gray-700 text-sm text-center font-work-sans mt-4">
+                  Pour plus d'informations sur les prix et la disponibilité
                 </p>
               </div>
             </motion.div>
