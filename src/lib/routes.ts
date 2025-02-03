@@ -11,6 +11,8 @@ export const routes = {
   },
   about: '/propos',
   contact: '/contact',
+  privacy: '/privacy',
+  terms: '/terms',
   blog: {
     root: '/blog',
     post: (slug: string) => `/blog/${slug}`,
