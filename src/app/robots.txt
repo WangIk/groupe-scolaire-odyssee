@@ -1,7 +1,7 @@
 # **** robots.txt for jackindustries.ma ****
 User-agent: *
 
-# Pages principales
+# Pages principales - Autoriser l'indexation
 Allow: /
 Allow: /produits
 Allow: /produits/*
@@ -9,8 +9,12 @@ Allow: /categories
 Allow: /categories/*
 Allow: /contact
 Allow: /propos
+Allow: /about
+Allow: /services
+Allow: /privacy
+Allow: /terms
 
-# Pages à bloquer
+# Ressources à bloquer
 Disallow: /admin/
 Disallow: /api/
 Disallow: /private/
@@ -18,6 +22,9 @@ Disallow: /*?*
 Disallow: /*.html$
 Disallow: /*#!
 Disallow: /cgi-sys/
+Disallow: /favicon.ico
+Disallow: /_next/
+Disallow: /assets/*.pdf
 
 # Sitemaps
 Sitemap: https://jackindustries.ma/sitemap.xml 
