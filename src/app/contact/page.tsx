@@ -114,7 +114,7 @@ const ContactPage = () => {
                     </div>
                     <div>
                       <h3 className="font-oswald font-semibold text-lg">Email</h3>
-                      <p className="text-gray-600 font-work-sans">contact@jackindustries.ma</p>
+                      <p className="text-gray-600 font-work-sans">jackindustries.maroc@gmail.com</p>
                       <p className="text-gray-600 font-work-sans">info@jackindustries.ma</p>
                     </div>
                   </div>
