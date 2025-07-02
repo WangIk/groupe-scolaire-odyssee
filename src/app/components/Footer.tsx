@@ -2,8 +2,9 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
+import { FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 import { HiOutlineLocationMarker, HiOutlinePhone, HiOutlineMail } from "react-icons/hi";
+import { SiTiktok } from "react-icons/si";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -40,14 +41,26 @@ const Footer = () => {
                 Programme intensif, activités extrascolaires et collaboration parents-enseignants.
               </p>
               <div className="flex space-x-4 text-gray-300 mt-2">
-                <a href="#" aria-label="Facebook" className="hover:text-[#D93030] transition-transform hover:scale-110">
+                <a
+                  href="https://web.facebook.com/GroupeScolaireOdyssee/?_rdc=1&_rdr#"
+                  aria-label="Facebook"
+                  className="hover:text-[#D93030] transition-transform hover:scale-110"
+                >
                   <FaFacebookF className="text-xl" />
                 </a>
-                <a href="#" aria-label="Instagram" className="hover:text-[#D93030] transition-transform hover:scale-110">
-                  <FaInstagram className="text-xl" />
+                <a
+                  href="https://www.tiktok.com/@groupe.scolaire.odyssee"
+                  aria-label="TikTok"
+                  className="hover:text-[#D93030] transition-transform hover:scale-110"
+                >
+                  <SiTiktok className="text-xl" />
                 </a>
-                <a href="#" aria-label="Twitter" className="hover:text-[#D93030] transition-transform hover:scale-110">
-                  <FaTwitter className="text-xl" />
+                <a
+                  href="https://www.linkedin.com/company/groupe-scolaire-odyssee/?viewAsMember=true"
+                  aria-label="LinkedIn"
+                  className="hover:text-[#D93030] transition-transform hover:scale-110"
+                >
+                  <FaLinkedinIn className="text-xl" />
                 </a>
               </div>
             </motion.div>
@@ -68,7 +81,7 @@ const Footer = () => {
               </ul>
             </motion.div>
 
-            {/* 3. Contact avec icônes alignées */}
+            {/* 3. Contact */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -79,7 +92,10 @@ const Footer = () => {
               <ul className="space-y-4 text-sm text-gray-300">
                 <li className="flex items-start gap-2">
                   <HiOutlineLocationMarker className="mt-1 text-[#D93030]" />
-                  <span>123 Avenue de l'Éducation, Casablanca 20000</span>
+                  <span>
+                    97116, Rue de BOUK' LI - BWALI, Camp 31 juillet,
+                    vers le PELLIGRINI et la direction d'OFIS, Pointe-Noire, République du Congo
+                  </span>
                 </li>
                 <li className="flex items-start gap-2">
                   <HiOutlinePhone className="mt-1 text-[#D93030]" />
@@ -87,7 +103,7 @@ const Footer = () => {
                 </li>
                 <li className="flex items-start gap-2">
                   <HiOutlineMail className="mt-1 text-[#D93030]" />
-                  <span>contact@lodyssee.ma</span>
+                  <span>contact@lodyssee.com</span>
                 </li>
               </ul>
             </motion.div>

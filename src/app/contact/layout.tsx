@@ -3,7 +3,7 @@ import { getMetadata } from '@/lib/metadata';
 
 export const metadata: Metadata = getMetadata({
   title: 'Contactez-nous',
-  description: 'Contactez JACK Industries pour tous vos besoins en matériel de construction et outillage professionnel. Service client disponible en français et arabe.'
+  description: 'Contactez nous pour les etudes de vos enfants'
 });
 
 export default function ContactLayout({

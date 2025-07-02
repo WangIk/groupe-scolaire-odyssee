@@ -90,7 +90,7 @@ const ContactPage = () => {
                 <div>
                   <h2 className="text-3xl font-oswald font-bold mb-6 text-[#1D3557]">Restons en contact</h2>
                   <p className="text-gray-600 font-work-sans">
-                    N'hésitez pas à nous contacter pour toute question ou demande de devis. 
+                    N'hésitez pas à nous contacter pour toute question scolaire. 
                     Notre équipe est à votre disposition pour vous accompagner.
                   </p>
                 </div>
@@ -102,8 +102,8 @@ const ContactPage = () => {
                     </div>
                     <div>
                       <h3 className="font-oswald font-semibold text-lg text-[#1D3557]">Téléphone</h3>
-                      <p className="text-gray-600 font-work-sans">+212 5 22 48 25 40</p>
-                      <p className="text-gray-600 font-work-sans">+212 6 16 96 65 09</p>
+                      <p className="text-gray-600 font-work-sans">+242 05 585 02 02</p>
+                      <p className="text-gray-600 font-work-sans">+242 04 061 34 48</p>
                     </div>
                   </div>
 
@@ -113,8 +113,8 @@ const ContactPage = () => {
                     </div>
                     <div>
                       <h3 className="font-oswald font-semibold text-lg text-[#1D3557]">Email</h3>
-                      <p className="text-gray-600 font-work-sans">jackindustries.maroc@gmail.com</p>
-                      <p className="text-gray-600 font-work-sans">info@jackindustries.ma</p>
+                      <p className="text-gray-600 font-work-sans">contact@lodyssee.com</p>
+                      <p className="text-gray-600 font-work-sans">contact@lodyssee.com</p>
                     </div>
                   </div>
 
@@ -125,8 +125,8 @@ const ContactPage = () => {
                     <div>
                       <h3 className="font-oswald font-semibold text-lg text-[#1D3557]">Adresse</h3>
                       <p className="text-gray-600 font-work-sans">
-                        Zone Industrielle, Rue 123<br />
-                        Casablanca, Maroc
+                        Rue de BOUK' LI - BWALI, Camp 31 juillet, vers le PELLIGRIN<br />
+                        Pointe-noire, Congo
                       </p>
                     </div>
                   </div>
@@ -211,7 +211,7 @@ const ContactPage = () => {
                 className="rounded-xl overflow-hidden shadow-lg h-[500px]"
               >
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.327679026318!2d-7.647896225866539!3d33.59680144164436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7d2fa5e0175db%3A0x610a949c03c70d15!2sJack%20Industries!5e0!3m2!1sfr!2sma!4v1695821347322!5m2!1sfr!2sma"
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d19989.191899139356!2d11.850262!3d-4.797496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2scg!4v1698888888888!5m2!1sfr!2scg"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}

@@ -6,8 +6,8 @@ import Image from "next/image";
 const testimonials = [
   {
     id: 1,
-    name: "Fatima Alami",
-    role: "Maman de Youssef",
+    name: "M. MAKAYA",
+    role: "Pere de Mickael",
     company: "Élève en CM2",
     image: "/assets/temoin1.jpg",
     content:
@@ -15,8 +15,8 @@ const testimonials = [
   },
   {
     id: 2,
-    name: "Karim Benjelloun",
-    role: "Papa de Amina",
+    name: "Georges MAKOSSO",
+    role: "Pere de Sandra",
     company: "Élève en 6ème",
     image: "/assets/temoin2.jpg",
     content:
@@ -24,7 +24,7 @@ const testimonials = [
   },
   {
     id: 3,
-    name: "Sara Mansouri",
+    name: "Antoinette",
     role: "Maman de Rayan",
     company: "Élève en Grande Section",
     image: "/assets/temoin3.jpg",
