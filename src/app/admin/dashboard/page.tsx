@@ -364,7 +364,7 @@ const Dashboard = () => {
                   {!formData.image ? (
                     <div 
                       onClick={() => fileInputRef.current?.click()}
-                      className="w-full border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer hover:border-accent-red transition-colors"
+                      className="w-full border-2 border-dashed border-gray-300 rounded-lg p-6 text-center cursor-pointer hover:border-accent-red transition-colors bg-gray-50 hover:bg-gray-100"
                     >
                       <input
                         type="file"
@@ -379,8 +379,8 @@ const Dashboard = () => {
                         }}
                       />
                       <div>
-                        <FiUpload className="mx-auto h-12 w-12 text-gray-400" />
-                        <p className="mt-2 text-sm text-gray-600">
+                        <FiUpload className="mx-auto h-8 w-8 text-gray-500" />
+                        <p className="mt-2 text-sm text-gray-700 font-medium">
                           {uploading ? 'Upload en cours...' : 'Cliquez pour sélectionner une image'}
                         </p>
                         <p className="text-xs text-gray-500 mt-1">

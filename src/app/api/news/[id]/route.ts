@@ -5,11 +5,11 @@ import { doc, updateDoc, deleteDoc } from 'firebase/firestore';
 // PUT - Mettre à jour une actualité
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const body = await request.json();
-    const { id } = params;
+    const { id } = await params;
 
     const newsRef = doc(db, 'news', id);
     const updateData = {
@@ -40,10 +40,10 @@ export async function PUT(
 // DELETE - Supprimer une actualité
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = params;
+    const { id } = await params;
     const newsRef = doc(db, 'news', id);
     await deleteDoc(newsRef);
 
