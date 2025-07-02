@@ -1,34 +1,34 @@
 "use client";
 
-import { motion } from 'framer-motion';
-import { useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, EffectFade } from 'swiper/modules';
-import { FaDownload } from 'react-icons/fa';
-import 'swiper/css';
-import 'swiper/css/autoplay';
+import { motion } from "framer-motion";
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, EffectFade } from "swiper/modules";
+import { FaDownload } from "react-icons/fa";
+import "swiper/css";
+import "swiper/css/autoplay";
 
 const backgrounds = [
   {
-    url: '/assets/bg1.png',
-    title: 'Excellence Acamdemique',
+    url: "/assets/bg1.png",
+    title: "Excellence Acamdemique",
     subtitle: "Inscrivez vos enfants dans les ...",
-    priority: true
+    priority: true,
   },
   {
-    url: '/assets/bg2.png',
-    title: 'Un Avenir garanti',
+    url: "/assets/bg2.png",
+    title: "Un Avenir garanti",
     subtitle: "La meilleure école au Congo",
-    priority: false
+    priority: false,
   },
   {
-    url: '/assets/bg3.png',
-    title: 'Un Avenir garanti',
+    url: "/assets/bg3.png",
+    title: "Un Avenir garanti",
     subtitle: "La meilleure école au Congo",
-    priority: false
-  }
+    priority: false,
+  },
 ];
 
 const HeroSection = () => {
@@ -36,7 +36,7 @@ const HeroSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section 
+    <section
       className="relative h-screen w-full overflow-hidden"
       aria-label="Bannière principale"
     >
@@ -60,16 +60,16 @@ const HeroSection = () => {
                 alt={`${bg.title} - ${bg.subtitle}`}
                 fill
                 className={`object-cover transition-transform duration-8000 ${
-                  activeIndex === index ? 'scale-up' : 'scale-100'
+                  activeIndex === index ? "scale-up" : "scale-100"
                 }`}
                 priority={bg.priority}
                 quality={90}
                 onLoad={() => setIsLoading(false)}
                 sizes="100vw"
-                loading={bg.priority ? 'eager' : 'lazy'}
+                loading={bg.priority ? "eager" : "lazy"}
               />
-              <div 
-                className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/30" 
+              <div
+                className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40"
                 aria-hidden="true"
               />
             </SwiperSlide>
@@ -84,29 +84,29 @@ const HeroSection = () => {
               <motion.span
                 initial={{ y: 30, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                className="inline-block font-work-sans text-lg md:text-xl mb-4 text-primary bg-white/90 px-4 py-1 rounded-full"
+                className="inline-block text-blue-600 font-semibold text-lg md:text-xl mb-4 bg-white/90 px-5 py-1.5 rounded-full shadow-sm"
               >
                 Votre partenaire depuis 1995
               </motion.span>
-              
+
               <motion.h1
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                className="font-oswald text-5xl sm:text-6xl md:text-8xl font-bold mb-4 drop-shadow-lg tracking-wider text-hero"
+                className="text-white font-bold text-5xl sm:text-6xl md:text-7xl leading-tight tracking-wide drop-shadow-xl font-[Poppins]"
               >
-              L'Odyssée
+                L'Odyssée
               </motion.h1>
 
               <motion.div
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.2 }}
-                className="space-y-4"
+                className="space-y-3 mt-4"
               >
-                <p className="font-work-sans text-xl md:text-2xl drop-shadow-md text-hero">
+                <p className="text-xl md:text-2xl text-white font-medium drop-shadow-sm">
                   {backgrounds[activeIndex].title}
                 </p>
-                <p className="font-work-sans text-lg md:text-xl text-hero-secondary">
+                <p className="text-lg md:text-xl text-white/90 drop-shadow">
                   {backgrounds[activeIndex].subtitle}
                 </p>
               </motion.div>
@@ -115,40 +115,35 @@ const HeroSection = () => {
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.4 }}
-                className="flex flex-col sm:flex-row gap-6 mt-12"
+                className="flex flex-col sm:flex-row gap-4 mt-10"
               >
-                <Link 
-                  href="/assets/JACK PLAQUETTE.pdf" 
-                  target="_blank" 
+                <Link
+                  href="/assets/JACK PLAQUETTE.pdf"
+                  target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Télécharger notre catalogue au format PDF"
                 >
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="btn btn-primary w-full sm:w-auto flex items-center justify-center"
-                    aria-label="Télécharger le catalogue"
+                    className="bg-gradient-to-r from-[#19559D] to-[#3BA65E] text-white font-semibold px-6 py-3 rounded-lg shadow-md hover:shadow-xl transition inline-flex items-center justify-center"
                   >
                     <span>Télécharger le catalogue</span>
                     <FaDownload className="h-5 w-5 ml-2" />
                   </motion.button>
                 </Link>
-                <Link 
-                  href="/contact"
-                  aria-label="Accéder au formulaire de demande de devis"
-                >
+                <Link href="/contact" aria-label="Accéder au formulaire de demande de devis">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="btn btn-outline w-full sm:w-auto"
-                    aria-label="Contactez-nous"
+                    className="border border-white text-white hover:bg-white hover:text-[#19559D] font-semibold px-6 py-3 rounded-lg transition inline-flex items-center justify-center"
                   >
                     <span>Contactez-nous</span>
-                    <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      className="h-5 w-5 ml-2" 
-                      fill="none" 
-                      viewBox="0 0 24 24" 
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5 ml-2"
+                      fill="none"
+                      viewBox="0 0 24 24"
                       stroke="currentColor"
                       aria-hidden="true"
                     >
@@ -162,7 +157,7 @@ const HeroSection = () => {
         </div>
 
         {/* Indicateurs de slide */}
-        <div 
+        <div
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2"
           role="tablist"
           aria-label="Navigation des slides"
@@ -174,7 +169,7 @@ const HeroSection = () => {
               aria-selected={activeIndex === index}
               aria-label={`Slide ${index + 1}`}
               className={`h-1.5 rounded-full transition-all duration-300 ${
-                activeIndex === index ? 'w-8 bg-primary' : 'w-2 bg-white/50'
+                activeIndex === index ? "w-8 bg-white" : "w-2 bg-white/50"
               }`}
             />
           ))}
@@ -189,19 +184,19 @@ const HeroSection = () => {
         className="absolute bottom-8 left-8 text-white flex items-center gap-2"
         aria-hidden="true"
       >
-        <div className="animate-float">
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            className="h-6 w-6" 
-            fill="none" 
-            viewBox="0 0 24 24" 
+        <div className="animate-bounce">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
             stroke="currentColor"
             aria-hidden="true"
           >
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
         </div>
-        <span className="text-sm font-work-sans">Scroll pour découvrir</span>
+        <span className="text-sm font-medium">Scroll pour découvrir</span>
       </motion.div>
     </section>
   );
