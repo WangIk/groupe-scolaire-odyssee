@@ -1,80 +1,72 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Roboto_Condensed } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const geistSans = Roboto_Condensed({
+  variable: "--font-roboto-condensed",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const geistMono = Roboto_Condensed({
+  variable: "--font-roboto-condensed",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://jackindustries.ma'),
+  metadataBase: new URL("https://ecole-odyssee.ma"),
   title: {
-    template: '%s | JACK Industries - Matériels de Construction et Travaux Publics au Maroc',
-    default: 'JACK Industries - Matériels de Construction, Outillages et Quincaillerie au Maroc'
+    template: "%s | Groupe Scolaire L'Odyssée",
+    default: "Groupe Scolaire L'Odyssée - De la crèche au collège",
   },
-  description: 'Fournisseur leader au Maroc en matériels de construction et travaux publics. Spécialiste en outillages électriques, tiges de coffrage, écrous ADC, contreplaqué bakélisé, cisailles Leadermec et Icaro. Livraison dans tout le Maroc.',
+  description:
+    "Le Groupe Scolaire L'Odyssée accueille vos enfants de la crèche au collège dans un cadre éducatif stimulant, axé sur l’excellence, l’épanouissement et l’égalité des chances.",
   keywords: [
-    'matériels construction Maroc',
-    'matériels travaux publics',
-    'outillages électriques',
-    'outils et quincailleries',
-    'drogueries',
-    'tiges de coffrage',
-    'tiges ADC',
-    'écrou de coffrage',
-    'écrou ADC',
-    'contreplaqué bakélisé',
-    'madrier',
-    'tube garde corps',
-    'tôle nervesco',
-    'pointe et file d\'attache',
-    'JP8',
-    'cale à béton',
-    'étoile',
-    'cale rambax',
-    'ventilateur brumisateur',
-    'rafraîchissement grande surface',
-    'cisaille leadermec',
-    'cisaille icaro',
-    'coudeuse leadermec',
-    'coudeuse ofmer'
-  ].join(', '),
+    "école privée",
+    "groupe scolaire",
+    "crèche",
+    "maternelle",
+    "élémentaire",
+    "collège",
+    "enseignement privé Maroc",
+    "école Rabat",
+    "éducation L’Odyssée",
+    "inscription école privée",
+    "programme scolaire Maroc",
+    "valeurs éducatives",
+    "activités périscolaires",
+    "enseignement de qualité"
+  ],
   robots: {
     index: true,
     follow: true,
     googleBot: {
       index: true,
       follow: true,
-      'max-snippet': -1,
-      'max-image-preview': 'large',
-      'max-video-preview': -1,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
     },
   },
   openGraph: {
-    type: 'website',
-    locale: 'fr_FR',
-    url: 'https://jackindustries.ma',
-    siteName: 'JACK Industries - Matériels de Construction',
-    title: 'JACK Industries - Leader en Matériels de Construction et Travaux Publics au Maroc',
-    description: 'Expert en matériels de construction, outillages électriques, tiges et écrous de coffrage, contreplaqué bakélisé. Distributeur officiel Leadermec et Icaro au Maroc.',
+    type: "website",
+    locale: "fr_FR",
+    url: "https://ecole-odyssee.ma",
+    siteName: "Groupe Scolaire L'Odyssée",
+    title: "L'Odyssée - École Privée | Crèche, Maternelle, Primaire, Collège",
+    description:
+      "Le Groupe Scolaire L'Odyssée propose un enseignement de qualité, de la crèche au collège, dans un cadre bienveillant et moderne.",
     images: [
       {
-        url: '/assets/og-image.jpg',
+        url: "/assets/og-image-ecole.jpg",
         width: 1200,
         height: 630,
-        alt: 'JACK Industries - Matériels de Construction et Travaux Publics au Maroc',
+        alt: "École L'Odyssée - Apprendre autrement",
       },
     ],
   },
   alternates: {
-    canonical: 'https://jackindustries.ma'
-  }
+    canonical: "https://ecole-odyssee.ma",
+  },
 };
 
 export default function RootLayout({
@@ -84,9 +76,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
       </body>
     </html>

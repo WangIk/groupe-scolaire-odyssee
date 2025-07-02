@@ -1,88 +1,87 @@
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
-import WhyChooseUs from './components/WhyChooseUs';
 import PopularProducts from './components/PopularProducts';
-import Partners from './components/Partners';
 import Testimonials from './components/Testimonials';
+import NewsSection from './components/NewsSection';
 import Footer from './components/Footer';
 import PageSchema from '@/components/PageSchema';
 import { Metadata } from 'next';
 
 const homeFAQs = [
   {
-    question: "Quels types de produits proposez-vous ?",
-    answer: "Nous proposons une large gamme de matériel de construction, outils professionnels et quincaillerie, incluant des outils électriques, manuels, matériaux de construction et fournitures diverses."
+    question: "Quels sont les niveaux d'enseignement proposés ?",
+    answer: "Notre Groupe Scolaire L'Odyssée accueille les élèves de la crèche au collège, en passant par la maternelle et l'élémentaire, offrant ainsi un parcours éducatif complet et cohérent."
   },
   {
-    question: "Livrez-vous dans tout le Maroc ?",
-    answer: "Oui, nous assurons la livraison dans toutes les régions du Maroc avec des délais optimisés et un service de suivi de commande."
+    question: "Quelle est votre approche pédagogique ?",
+    answer: "Nous visons l'excellence avec un programme d'enseignements et d'examens intensifs, émaillé par des activités extrascolaires et périscolaires pour un développement complet de l'élève."
   },
   {
-    question: "Proposez-vous des garanties sur vos produits ?",
-    answer: "Tous nos produits sont garantis et nous assurons un service après-vente professionnel. La durée de garantie varie selon le type de produit."
+    question: "Comment se déroule la collaboration parents-enseignants ?",
+    answer: "Les parents et les enseignants se font mutuellement confiance et avancent vers le même but, en se penchant ensemble sur les difficultés et les capacités de l'élève pour assurer l'égalité des chances."
   },
   {
-    question: "Quelles sont vos méthodes de paiement acceptées ?",
-    answer: "Nous acceptons plusieurs modes de paiement : carte bancaire, virement bancaire, paiement à la livraison, et paiement en ligne sécurisé."
+    question: "Proposez-vous des activités extrascolaires ?",
+    answer: "Oui, nous proposons un large éventail d'activités extrascolaires et périscolaires pour enrichir l'expérience éducative et développer les talents de chaque élève."
   },
   {
-    question: "Proposez-vous des devis pour les projets professionnels ?",
-    answer: "Oui, nous établissons des devis personnalisés pour les professionnels et les grands projets. Notre équipe commerciale est à votre disposition pour étudier vos besoins."
+    question: "Quels sont les horaires d'ouverture ?",
+    answer: "Notre école est ouverte du lundi au vendredi avec des horaires adaptés à chaque niveau. La crèche propose également un accueil flexible pour les familles."
   },
   {
-    question: "Avez-vous un showroom pour voir les produits ?",
-    answer: "Oui, notre showroom est situé à Casablanca où vous pouvez découvrir notre gamme de produits et bénéficier des conseils de nos experts."
+    question: "Comment s'inscrire à l'école L'Odyssée ?",
+    answer: "Les inscriptions se font sur rendez-vous. Notre équipe administrative vous accompagne dans toutes les démarches et répond à vos questions sur notre projet éducatif."
   },
   {
-    question: "Quels sont vos délais de livraison moyens ?",
-    answer: "Les délais de livraison varient entre 24-48h pour Casablanca et 2-5 jours ouvrables pour les autres villes du Maroc, selon la disponibilité des produits."
+    question: "Proposez-vous un service de restauration ?",
+    answer: "Oui, nous proposons un service de restauration scolaire avec des menus équilibrés et variés, préparés sur place dans notre cuisine."
   },
   {
-    question: "Proposez-vous des services d'installation ou de formation ?",
-    answer: "Oui, nous proposons des services d'installation pour certains équipements ainsi que des formations pour l'utilisation optimale des machines professionnelles."
+    question: "Quels sont les tarifs de scolarité ?",
+    answer: "Les tarifs varient selon le niveau d'enseignement. Nous proposons également des facilités de paiement et des réductions pour les fratries. Contactez-nous pour plus d'informations."
   }
 ];
 
 const testimonials = [
   {
-    author: "Mohammed Alami",
-    reviewBody: "Excellent service et produits de qualité. La livraison était rapide et le service client très professionnel.",
+    author: "Fatima Alami",
+    reviewBody: "Excellente école avec un projet éducatif solide. Mon fils a fait d'énormes progrès depuis son entrée à L'Odyssée. L'équipe pédagogique est très investie.",
     reviewRating: 5,
     datePublished: "2024-01-15"
   },
   {
     author: "Karim Benjelloun",
-    reviewBody: "Grande variété de produits et prix compétitifs. Je recommande vivement pour tous les professionnels du BTP.",
+    reviewBody: "Une école qui prône vraiment l'excellence. Les activités extrascolaires sont variées et les résultats scolaires sont au rendez-vous. Je recommande vivement.",
     reviewRating: 5,
     datePublished: "2024-01-20"
   },
   {
     author: "Sara Mansouri",
-    reviewBody: "Service après-vente excellent et équipe très réactive. Les produits sont conformes aux descriptions.",
-    reviewRating: 4,
+    reviewBody: "L'équipe enseignante est très professionnelle et bienveillante. La communication avec les parents est excellente. Mon enfant s'épanouit vraiment dans cette école.",
+    reviewRating: 5,
     datePublished: "2024-01-25"
   }
 ];
 
 export const metadata: Metadata = {
-  title: 'JACK Industries | Matériel, Outils de Construction et Quincaillerie au Maroc',
-  description: 'Premier fournisseur de matériel de construction, outils professionnels et quincaillerie au Maroc. Large gamme d\'outillage, matériaux BTP et fournitures de construction. Livraison dans tout le Maroc.',
-  keywords: 'matériel construction Maroc, outils construction Maroc, quincaillerie Maroc, outillage professionnel, matériaux BTP, fournitures construction, quincaillerie Casablanca, outillage Maroc, bricolage Maroc, outils électriques, outils manuels, visserie, plomberie, électricité',
+  title: 'Groupe Scolaire L\'Odyssée | Excellence Éducative de la Crèche au Collège',
+  description: 'Groupe Scolaire Privé L\'Odyssée : excellence éducative de la crèche au collège. Programme intensif, activités extrascolaires et collaboration parents-enseignants pour l\'égalité des chances.',
+  keywords: 'école privée Maroc, groupe scolaire, crèche, maternelle, élémentaire, collège, excellence éducative, activités extrascolaires, pédagogie, inscription école, éducation Maroc',
   openGraph: {
-    title: 'JACK Industries | Matériel et Outils de Construction au Maroc',
-    description: 'Votre fournisseur en matériel de construction, outillage professionnel et quincaillerie au Maroc. Qualité et prix compétitifs.',
+    title: 'Groupe Scolaire L\'Odyssée | Excellence Éducative',
+    description: 'Votre partenaire éducatif de la crèche au collège. Excellence, activités extrascolaires et égalité des chances.',
     type: 'website',
     locale: 'fr_FR',
-    siteName: 'JACK Industries Maroc',
+    siteName: 'Groupe Scolaire L\'Odyssée',
   },
   robots: {
     index: true,
     follow: true,
   },
   viewport: 'width=device-width, initial-scale=1',
-  themeColor: '#ffffff',
+  themeColor: '#223F7B',
   alternates: {
-    canonical: 'https://www.jackindustries.ma'
+    canonical: 'https://www.lodyssee.ma'
   }
 };
 
@@ -100,9 +99,8 @@ export default function Home() {
       />
       <Header />
       <HeroSection />
-      <WhyChooseUs />
       <PopularProducts />
-      <Partners />
+      <NewsSection />
       <Testimonials />
       <Footer />
     </main>

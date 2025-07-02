@@ -1,43 +1,43 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { FaTools, FaHandshake, FaAward, FaHeadset, FaShieldAlt, FaTruck } from 'react-icons/fa';
+import { FaGraduationCap, FaUsers, FaStar, FaHeart, FaShieldAlt, FaLightbulb } from 'react-icons/fa';
 
 const features = [
   {
-    title: "Expertise depuis 1995",
-    description: "Plus de 25 ans d'expérience dans l'importation et la distribution de matériel professionnel.",
-    icon: <FaTools className="w-10 h-10 text-primary" />,
+    title: "Parcours complet",
+    description: "De la crèche au collège, un parcours éducatif cohérent et progressif pour chaque enfant.",
+    icon: <FaGraduationCap className="w-10 h-10 text-accent-red" />,
     delay: 0.1
   },
   {
-    title: "Partenariats durables",
-    description: "Collaboration continue avec les plus grandes marques mondiales depuis notre création.",
-    icon: <FaHandshake className="w-10 h-10 text-primary" />,
+    title: "Collaboration parents-enseignants",
+    description: "Une relation de confiance mutuelle pour accompagner chaque élève vers la réussite.",
+    icon: <FaUsers className="w-10 h-10 text-accent-red" />,
     delay: 0.2
   },
   {
-    title: "Qualité garantie",
-    description: "Sélection rigoureuse des produits pour garantir fiabilité et performance.",
-    icon: <FaAward className="w-10 h-10 text-primary" />,
+    title: "Excellence académique",
+    description: "Programme d'enseignements et d'examens intensifs pour viser l'excellence.",
+    icon: <FaStar className="w-10 h-10 text-accent-red" />,
     delay: 0.3
   },
   {
-    title: "Service client premium",
-    description: "Accompagnement personnalisé et support technique professionnel.",
-    icon: <FaHeadset className="w-10 h-10 text-primary" />,
+    title: "Développement personnel",
+    description: "Activités extrascolaires et périscolaires pour l'épanouissement complet de l'enfant.",
+    icon: <FaHeart className="w-10 h-10 text-accent-red" />,
     delay: 0.4
   },
   {
-    title: "Garantie étendue",
-    description: "Protection optimale de vos investissements avec nos garanties exclusives.",
-    icon: <FaShieldAlt className="w-10 h-10 text-primary" />,
+    title: "Égalité des chances",
+    description: "Chaque élève mérite d'atteindre son plein potentiel, quelles que soient ses difficultés.",
+    icon: <FaShieldAlt className="w-10 h-10 text-accent-red" />,
     delay: 0.5
   },
   {
-    title: "Livraison rapide",
-    description: "Service de livraison efficace partout au Maroc avec suivi en temps réel.",
-    icon: <FaTruck className="w-10 h-10 text-primary" />,
+    title: "Innovation pédagogique",
+    description: "Méthodes d'enseignement modernes et adaptées aux besoins de chaque enfant.",
+    icon: <FaLightbulb className="w-10 h-10 text-accent-red" />,
     delay: 0.6
   }
 ];
@@ -52,16 +52,16 @@ const WhyChooseUs = () => {
           viewport={{ once: true }}
           className="max-w-4xl mx-auto text-center mb-16"
         >
-          <span className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-4">
-            Pourquoi nous choisir ?
+          <span className="inline-block bg-accent-red/10 text-accent-red px-4 py-2 rounded-full text-sm font-semibold mb-4">
+            Pourquoi choisir L'Odyssée ?
           </span>
           <h2 className="text-4xl font-oswald font-bold mb-6">
-            Une expertise reconnue à votre service
+            L'excellence éducative à votre service
           </h2>
-          <div className="h-1 w-20 bg-primary mx-auto rounded-full mb-6" />
+          <div className="h-1 w-20 bg-accent-red mx-auto rounded-full mb-6" />
           <p className="text-gray-600 font-work-sans text-lg max-w-2xl mx-auto">
-            Découvrez les raisons qui font de Jack Industries le partenaire idéal 
-            pour tous vos besoins en outillage et matériel professionnel.
+            Découvrez les valeurs et l'approche pédagogique qui font du Groupe Scolaire L'Odyssée 
+            le partenaire éducatif idéal pour l'épanouissement de votre enfant.
           </p>
         </motion.div>
         
@@ -80,7 +80,7 @@ const WhyChooseUs = () => {
                 <div className="mb-6 transform group-hover:scale-110 transition-transform duration-300">
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-oswald font-semibold mb-4 text-gray-900 group-hover:text-primary transition-colors">
+                <h3 className="text-xl font-oswald font-semibold mb-4 text-gray-900 group-hover:text-accent-red transition-colors">
                   {feature.title}
                 </h3>
                 <p className="text-gray-600 font-work-sans leading-relaxed">
@@ -98,13 +98,13 @@ const WhyChooseUs = () => {
           transition={{ delay: 0.8 }}
           className="mt-16 text-center"
         >
-          <div className="inline-flex items-center gap-4 bg-primary/5 px-6 py-3 rounded-full">
-            <span className="text-primary font-oswald text-lg font-semibold">
-              Plus de 25 ans d'excellence
+          <div className="inline-flex items-center gap-4 bg-accent-red/5 px-6 py-3 rounded-full">
+            <span className="text-accent-red font-oswald text-lg font-semibold">
+              Excellence éducative
             </span>
-            <div className="w-2 h-2 rounded-full bg-primary" />
+            <div className="w-2 h-2 rounded-full bg-accent-red" />
             <span className="text-gray-600 font-work-sans">
-              Des milliers de clients satisfaits
+              Égalité des chances pour tous
             </span>
           </div>
         </motion.div>

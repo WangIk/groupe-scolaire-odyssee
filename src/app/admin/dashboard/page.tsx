@@ -6,58 +6,92 @@ import { signOut } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { Product } from '@/lib/types';
-import { getProducts, addProduct, updateProduct, deleteProduct } from '@/lib/api';
 import Image from 'next/image';
-import { FiUpload, FiX } from 'react-icons/fi';
+import { FiUpload, FiX, FiCalendar, FiUser } from 'react-icons/fi';
+
+// Type pour les actualités
+interface News {
+  id: string;
+  title: string;
+  content: string;
+  image: string;
+  author: string;
+  date: Date;
+  category: string;
+  isPublished: boolean;
+}
+
+// Fonctions API pour les actualités (à implémenter dans lib/api.ts)
+const getNews = async (): Promise<News[]> => {
+  // TODO: Implémenter l'appel API réel
+  const response = await fetch('/api/news');
+  return response.json();
+};
+
+const addNews = async (newsData: Omit<News, 'id'>): Promise<News> => {
+  const response = await fetch('/api/news', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(newsData),
+  });
+  return response.json();
+};
+
+const updateNews = async (id: string, newsData: Partial<News>): Promise<News> => {
+  const response = await fetch(`/api/news/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(newsData),
+  });
+  return response.json();
+};
+
+const deleteNews = async (id: string): Promise<void> => {
+  await fetch(`/api/news/${id}`, {
+    method: 'DELETE',
+  });
+};
 
 const Dashboard = () => {
   const { user, loading } = useAuth();
   const router = useRouter();
-  const [products, setProducts] = useState<Product[]>([]);
-  const [isAddingProduct, setIsAddingProduct] = useState(false);
-  const [editingProduct, setEditingProduct] = useState<Product | null>(null);
+  const [news, setNews] = useState<News[]>([]);
+  const [isAddingNews, setIsAddingNews] = useState(false);
+  const [editingNews, setEditingNews] = useState<News | null>(null);
   const [uploading, setUploading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [formData, setFormData] = useState({
-    name: '',
-    description: '',
-    price: '',
-    image: ''
+    title: '',
+    content: '',
+    image: '',
+    author: '',
+    category: 'actualite',
+    isPublished: true
   });
 
   useEffect(() => {
-    loadProducts();
+    loadNews();
   }, []);
 
-  const loadProducts = async () => {
+  const loadNews = async () => {
     try {
-      const productsData = await getProducts();
-      console.log('Produits chargés:', productsData);
-      setProducts(productsData);
+      const newsData = await getNews();
+      console.log('Actualités chargées:', newsData);
+      setNews(newsData);
     } catch (error) {
-      console.error('Erreur lors du chargement des produits:', error);
+      console.error('Erreur lors du chargement des actualités:', error);
     }
   };
 
   const handleLogout = async () => {
     try {
-      // Déconnexion de Firebase
       await signOut(auth);
-      
-      // Nettoyage complet du stockage
       localStorage.clear();
       sessionStorage.clear();
-      
-      // Supprimer tous les cookies
       document.cookie.split(";").forEach(function(c) { 
         document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
       });
-
-      // Attendre un peu pour que tout soit nettoyé
       await new Promise(resolve => setTimeout(resolve, 100));
-      
-      // Redirection forcée avec reload
       window.location.replace('/admin/login');
     } catch (error) {
       console.error('Erreur lors de la déconnexion:', error);
@@ -74,49 +108,52 @@ const Dashboard = () => {
         return;
       }
 
-      const productData = {
-        name: formData.name,
-        description: formData.description,
-        price: parseFloat(formData.price),
+      const newsData = {
+        title: formData.title,
+        content: formData.content,
         image: formData.image,
-        createdAt: new Date(),
-        category: 'default'
+        author: formData.author,
+        category: formData.category,
+        isPublished: formData.isPublished,
+        date: new Date()
       };
 
-      if (editingProduct) {
-        await updateProduct(editingProduct.id, productData);
+      if (editingNews) {
+        await updateNews(editingNews.id, newsData);
       } else {
-        await addProduct(productData);
+        await addNews(newsData);
       }
 
-      await loadProducts();
+      await loadNews();
       resetForm();
-      setIsAddingProduct(false);
-      setEditingProduct(null);
+      setIsAddingNews(false);
+      setEditingNews(null);
     } catch (error) {
       console.error('Erreur lors de la sauvegarde:', error);
-      alert('Erreur lors de la sauvegarde du produit');
+      alert('Erreur lors de la sauvegarde de l\'actualité');
     }
   };
 
-  const handleEdit = (product: Product) => {
-    setEditingProduct(product);
+  const handleEdit = (newsItem: News) => {
+    setEditingNews(newsItem);
     setFormData({
-      name: product.name,
-      description: product.description,
-      price: product.price.toString(),
-      image: product.image
+      title: newsItem.title,
+      content: newsItem.content,
+      image: newsItem.image,
+      author: newsItem.author,
+      category: newsItem.category,
+      isPublished: newsItem.isPublished
     });
-    setIsAddingProduct(true);
+    setIsAddingNews(true);
   };
 
   const handleDelete = async (id: string) => {
-    if (window.confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')) {
+    if (window.confirm('Êtes-vous sûr de vouloir supprimer cette actualité ?')) {
       try {
-        await deleteProduct(id);
-        await loadProducts();
-        setIsAddingProduct(false);
-        setEditingProduct(null);
+        await deleteNews(id);
+        await loadNews();
+        setIsAddingNews(false);
+        setEditingNews(null);
       } catch (error) {
         console.error('Erreur lors de la suppression:', error);
         alert('Erreur lors de la suppression');
@@ -126,10 +163,12 @@ const Dashboard = () => {
 
   const resetForm = () => {
     setFormData({
-      name: '',
-      description: '',
-      price: '',
-      image: ''
+      title: '',
+      content: '',
+      image: '',
+      author: '',
+      category: 'actualite',
+      isPublished: true
     });
   };
 
@@ -163,6 +202,24 @@ const Dashboard = () => {
     }
   };
 
+  const getCategoryColor = (category: string) => {
+    switch (category) {
+      case 'inscription': return 'bg-accent-green text-white';
+      case 'activites': return 'bg-accent-yellow text-gray-900';
+      case 'reunion': return 'bg-accent-bordeaux text-white';
+      default: return 'bg-accent-red text-white';
+    }
+  };
+
+  const getCategoryLabel = (category: string) => {
+    switch (category) {
+      case 'inscription': return 'Inscription';
+      case 'activites': return 'Activités';
+      case 'reunion': return 'Réunion';
+      default: return 'Actualité';
+    }
+  };
+
   if (loading) {
     return <div>Chargement...</div>;
   }
@@ -170,13 +227,18 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen flex flex-col bg-gray-100">
       {/* Navbar fixe */}
-      <nav className="bg-white shadow-md sticky top-0 z-40">
+      <nav className="bg-primary shadow-md sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
-            <h1 className="font-oswald text-xl font-bold">Dashboard Admin</h1>
+            <div className="flex items-center space-x-2">
+              <div className="w-8 h-8 bg-accent-red rounded-full flex items-center justify-center">
+                <span className="text-white font-oswald font-bold text-sm">L</span>
+              </div>
+              <h1 className="font-oswald text-xl font-bold text-white">Dashboard L'Odyssée</h1>
+            </div>
             <button
               onClick={handleLogout}
-              className="text-gray-600 hover:text-primary transition-colors"
+              className="text-white hover:text-accent-red transition-colors"
             >
               Déconnexion
             </button>
@@ -191,48 +253,65 @@ const Dashboard = () => {
           <button
             onClick={() => {
               resetForm();
-              setIsAddingProduct(true);
+              setIsAddingNews(true);
             }}
-            className="fixed bottom-6 right-6 bg-white text-gray-900 p-4 rounded-full shadow-lg hover:bg-gray-50 transition-colors z-30"
+            className="fixed bottom-6 right-6 bg-accent-red text-white p-4 rounded-full shadow-lg hover:bg-accent-red/90 transition-colors z-30"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
             </svg>
           </button>
 
-          {/* Liste des produits */}
+          {/* Liste des actualités */}
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 pb-20">
-            {products.map((product) => (
+            {news.map((newsItem) => (
               <motion.div
-                key={product.id}
+                key={newsItem.id}
                 layout
                 className="bg-white rounded-xl shadow-md overflow-hidden group hover:shadow-lg transition-shadow"
               >
                 <div className="relative h-48">
-                  {product.image && (
+                  {newsItem.image && (
                     <Image
-                      src={product.image}
-                      alt={product.name}
+                      src={newsItem.image}
+                      alt={newsItem.title}
                       fill
                       className="object-cover"
                       unoptimized
                       priority
                     />
                   )}
+                  <div className="absolute top-2 left-2">
+                    <span className={`px-2 py-1 rounded-full text-xs font-semibold ${getCategoryColor(newsItem.category)}`}>
+                      {getCategoryLabel(newsItem.category)}
+                    </span>
+                  </div>
+                  <div className="absolute top-2 right-2">
+                    <span className={`px-2 py-1 rounded-full text-xs font-semibold ${newsItem.isPublished ? 'bg-accent-green text-white' : 'bg-gray-500 text-white'}`}>
+                      {newsItem.isPublished ? 'Publié' : 'Brouillon'}
+                    </span>
+                  </div>
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <button
-                      onClick={() => handleEdit(product)}
+                      onClick={() => handleEdit(newsItem)}
                       className="bg-white text-gray-900 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors transform hover:scale-105"
                     >
-                      Voir détails
+                      Modifier
                     </button>
                   </div>
                 </div>
                 <div className="p-4">
-                  <h3 className="font-oswald text-xl font-semibold truncate">{product.name}</h3>
-                  <p className="text-gray-600 text-sm mt-1 line-clamp-2">{product.description}</p>
-                  <div className="mt-3">
-                    <span className="text-primary font-semibold text-lg">{product.price} DH</span>
+                  <h3 className="font-oswald text-lg font-semibold line-clamp-2 mb-2">{newsItem.title}</h3>
+                  <p className="text-gray-600 text-sm line-clamp-3 mb-3">{newsItem.content}</p>
+                  <div className="flex items-center justify-between text-xs text-gray-500">
+                    <div className="flex items-center space-x-2">
+                      <FiUser className="w-3 h-3" />
+                      <span>{newsItem.author}</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <FiCalendar className="w-3 h-3" />
+                      <span>{new Date(newsItem.date).toLocaleDateString('fr-FR')}</span>
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -241,22 +320,22 @@ const Dashboard = () => {
         </div>
       </main>
 
-      {/* Modal d'ajout/édition de produit */}
-      {isAddingProduct && (
+      {/* Modal d'ajout/édition d'actualité */}
+      {isAddingNews && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="bg-white p-8 rounded-xl max-w-md w-full mx-4 max-h-[90vh] overflow-y-auto"
+            className="bg-white p-8 rounded-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto"
           >
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-oswald font-bold">
-                {editingProduct ? 'Modifier le produit' : 'Ajouter un produit'}
+                {editingNews ? 'Modifier l\'actualité' : 'Ajouter une actualité'}
               </h2>
               <div className="flex gap-2">
-                {editingProduct && (
+                {editingNews && (
                   <button
-                    onClick={() => handleDelete(editingProduct.id)}
+                    onClick={() => handleDelete(editingNews.id)}
                     className="text-red-500 hover:text-red-700 px-3 py-1 rounded"
                   >
                     Supprimer
@@ -265,8 +344,8 @@ const Dashboard = () => {
                 <button
                   onClick={() => {
                     resetForm();
-                    setIsAddingProduct(false);
-                    setEditingProduct(null);
+                    setIsAddingNews(false);
+                    setEditingNews(null);
                   }}
                   className="text-gray-500 hover:text-gray-700"
                 >
@@ -279,13 +358,13 @@ const Dashboard = () => {
               {/* Image upload */}
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Image du produit
+                  Image de l'actualité
                 </label>
                 <div className="relative">
                   {!formData.image ? (
                     <div 
                       onClick={() => fileInputRef.current?.click()}
-                      className="w-full border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer hover:border-primary transition-colors"
+                      className="w-full border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer hover:border-accent-red transition-colors"
                     >
                       <input
                         type="file"
@@ -331,55 +410,84 @@ const Dashboard = () => {
                 </div>
               </div>
 
-              {/* Nom */}
+              {/* Titre */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Nom du produit
+                  Titre de l'actualité
                 </label>
                 <input
                   type="text"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
+                  value={formData.title}
+                  onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                  className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-accent-red/20 focus:border-accent-red outline-none"
                   required
                 />
               </div>
 
-              {/* Description */}
+              {/* Contenu */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Description
+                  Contenu
                 </label>
                 <textarea
-                  value={formData.description}
-                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                  className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none min-h-[100px]"
+                  value={formData.content}
+                  onChange={(e) => setFormData({ ...formData, content: e.target.value })}
+                  className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-accent-red/20 focus:border-accent-red outline-none min-h-[120px]"
                   required
                 />
               </div>
 
-              {/* Prix */}
+              {/* Auteur */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Prix (DH)
+                  Auteur
                 </label>
                 <input
-                  type="number"
-                  value={formData.price}
-                  onChange={(e) => setFormData({ ...formData, price: e.target.value })}
-                  className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
-                  min="0"
-                  step="0.01"
+                  type="text"
+                  value={formData.author}
+                  onChange={(e) => setFormData({ ...formData, author: e.target.value })}
+                  className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-accent-red/20 focus:border-accent-red outline-none"
                   required
                 />
+              </div>
+
+              {/* Catégorie */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  Catégorie
+                </label>
+                <select
+                  value={formData.category}
+                  onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                  className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-accent-red/20 focus:border-accent-red outline-none"
+                >
+                  <option value="actualite">Actualité</option>
+                  <option value="inscription">Inscription</option>
+                  <option value="activites">Activités</option>
+                  <option value="reunion">Réunion</option>
+                </select>
+              </div>
+
+              {/* Statut de publication */}
+              <div className="flex items-center space-x-2">
+                <input
+                  type="checkbox"
+                  id="isPublished"
+                  checked={formData.isPublished}
+                  onChange={(e) => setFormData({ ...formData, isPublished: e.target.checked })}
+                  className="rounded focus:ring-accent-red"
+                />
+                <label htmlFor="isPublished" className="text-sm font-medium text-gray-700">
+                  Publier immédiatement
+                </label>
               </div>
 
               <div className="flex justify-center mt-6">
                 <button
                   type="submit"
-                  className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold text-lg shadow-md"
+                  className="w-full bg-accent-red text-white py-3 rounded-lg hover:bg-accent-red/90 transition-colors font-semibold text-lg shadow-md"
                 >
-                  {editingProduct ? 'Mettre à jour' : 'Valider'}
+                  {editingNews ? 'Mettre à jour' : 'Publier l\'actualité'}
                 </button>
               </div>
             </form>

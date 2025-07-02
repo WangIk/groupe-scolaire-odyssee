@@ -6,33 +6,27 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade } from 'swiper/modules';
-
+import { FaDownload } from 'react-icons/fa';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 
 const backgrounds = [
   {
-    url: '/assets/bg1.jpg',
-    title: 'Excellence en Outillage',
-    subtitle: "Des outils professionnels pour vos projets",
+    url: '/assets/bg1.png',
+    title: 'Excellence Acamdemique',
+    subtitle: "Inscrivez vos enfants dans les ...",
     priority: true
   },
   {
-    url: '/assets/bg2.jpg',
-    title: 'Qualité Professionnelle',
-    subtitle: "Le meilleur de l'équipement industriel",
+    url: '/assets/bg2.png',
+    title: 'Un Avenir garanti',
+    subtitle: "La meilleure école au Congo",
     priority: false
   },
   {
-    url: '/assets/bg5.jpg',
-    title: 'Innovation Continue',
-    subtitle: "Les dernières technologies à votre service",
-    priority: false
-  },
-  {
-    url: '/assets/bg6.jpg',
-    title: 'Service Premium',
-    subtitle: "Un accompagnement personnalisé",
+    url: '/assets/bg3.png',
+    title: 'Un Avenir garanti',
+    subtitle: "La meilleure école au Congo",
     priority: false
   }
 ];
@@ -100,7 +94,7 @@ const HeroSection = () => {
                 animate={{ y: 0, opacity: 1 }}
                 className="font-oswald text-5xl sm:text-6xl md:text-8xl font-bold mb-4 drop-shadow-lg tracking-wider text-hero"
               >
-                JACK INDUSTRIES
+              L'Odyssée
               </motion.h1>
 
               <motion.div
@@ -132,20 +126,11 @@ const HeroSection = () => {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="btn btn-primary w-full sm:w-auto"
+                    className="btn btn-primary w-full sm:w-auto flex items-center justify-center"
                     aria-label="Télécharger le catalogue"
                   >
                     <span>Télécharger le catalogue</span>
-                    <svg 
-                      xmlns="http://www.w3.org/2000/svg" 
-                      className="h-5 w-5 ml-2" 
-                      fill="none" 
-                      viewBox="0 0 24 24" 
-                      stroke="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                    </svg>
+                    <FaDownload className="h-5 w-5 ml-2" />
                   </motion.button>
                 </Link>
                 <Link 
@@ -156,9 +141,9 @@ const HeroSection = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="btn btn-outline w-full sm:w-auto"
-                    aria-label="Demander un devis"
+                    aria-label="Contactez-nous"
                   >
-                    <span>Demander un devis</span>
+                    <span>Contactez-nous</span>
                     <svg 
                       xmlns="http://www.w3.org/2000/svg" 
                       className="h-5 w-5 ml-2" 

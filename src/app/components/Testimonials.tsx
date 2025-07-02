@@ -6,27 +6,27 @@ import Image from 'next/image';
 const testimonials = [
   {
     id: 1,
-    name: "Mohammed Alami",
-    role: "Directeur de Projet",
-    company: "Construction Pro",
+    name: "Fatima Alami",
+    role: "Maman de Youssef",
+    company: "Élève en CM2",
     image: "/assets/temoin1.jpg",
-    content: "Jack Industries est notre partenaire de confiance depuis plus de 10 ans. La qualité de leurs produits et leur service client sont exceptionnels."
+    content: "L'Odyssée a transformé l'expérience scolaire de mon fils. L'équipe pédagogique est très investie et les résultats sont au rendez-vous."
   },
   {
     id: 2,
-    name: "Sarah Benani",
-    role: "Responsable Achats",
-    company: "BTP Solutions",
+    name: "Karim Benjelloun",
+    role: "Papa de Amina",
+    company: "Élève en 6ème",
     image: "/assets/temoin2.jpg",
-    content: "Un fournisseur fiable avec un excellent rapport qualité-prix. Leur réactivité et leur professionnalisme font toute la différence."
+    content: "Une école qui prône vraiment l'excellence. Les activités extrascolaires sont variées et la communication avec les parents est excellente."
   },
   {
     id: 3,
-    name: "Karim Tazi",
-    role: "Chef de Chantier",
-    company: "Atlas Construction",
+    name: "Sara Mansouri",
+    role: "Maman de Rayan",
+    company: "Élève en Grande Section",
     image: "/assets/temoin3.jpg",
-    content: "Les produits de Jack Industries nous ont permis d'améliorer significativement notre efficacité sur les chantiers."
+    content: "Mon enfant s'épanouit vraiment dans cette école. L'approche pédagogique est moderne et bienveillante."
   }
 ];
 
@@ -40,9 +40,9 @@ const Testimonials = () => {
           viewport={{ once: true }}
           className="text-center mb-24"
         >
-          <span className="text-primary font-work-sans text-lg">Témoignages</span>
-          <h2 className="text-4xl font-oswald font-bold mt-2 mb-4">Ce que disent nos clients</h2>
-          <div className="h-1 w-20 bg-primary mx-auto" />
+          <span className="text-accent-red font-work-sans text-lg">Témoignages</span>
+          <h2 className="text-4xl font-oswald font-bold mt-2 mb-4">Ce que disent nos parents</h2>
+          <div className="h-1 w-20 bg-accent-red mx-auto" />
         </motion.div>
 
         <div className="max-w-6xl mx-auto">
@@ -68,13 +68,13 @@ const Testimonials = () => {
                   </div>
                 </div>
                 <div className="text-center">
-                  <svg className="w-10 h-10 text-primary/20 mx-auto mb-4" fill="currentColor" viewBox="0 0 32 32">
+                  <svg className="w-10 h-10 text-accent-red/20 mx-auto mb-4" fill="currentColor" viewBox="0 0 32 32">
                     <path d="M10 8c-3.3 0-6 2.7-6 6v10h10V14H8c0-1.1.9-2 2-2V8zm12 0c-3.3 0-6 2.7-6 6v10h10V14h-6c0-1.1.9-2 2-2V8z"/>
                   </svg>
                   <p className="text-gray-600 font-work-sans mb-4">{testimonial.content}</p>
                   <div className="border-t border-gray-200 pt-4 mt-4">
                     <p className="font-oswald font-semibold">{testimonial.name}</p>
-                    <p className="text-primary text-sm font-work-sans">{testimonial.role}</p>
+                    <p className="text-accent-red text-sm font-work-sans">{testimonial.role}</p>
                     <p className="text-gray-500 text-sm font-work-sans">{testimonial.company}</p>
                   </div>
                 </div>

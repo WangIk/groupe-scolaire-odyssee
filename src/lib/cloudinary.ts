@@ -1,4 +1,4 @@
 export const cloudinaryConfig = {
   cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
-  uploadPreset: 'jack_products', // Vous devrez créer cet upload preset dans votre dashboard Cloudinary
+  uploadPreset: 'odyssee_products', // créer cet upload preset dans dashboard Cloudinary
 }; 
