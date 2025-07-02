@@ -3,6 +3,7 @@ import HeroSection from './components/HeroSection';
 import PopularProducts from './components/PopularProducts';
 import Testimonials from './components/Testimonials';
 import NewsSection from './components/NewsSection';
+import StatSection from './components/StatSection';
 import Footer from './components/Footer';
 import PageSchema from '@/components/PageSchema';
 import { Metadata } from 'next';
@@ -100,9 +101,10 @@ export default function Home() {
       <Header />
       <HeroSection />
       <PopularProducts />
+      <StatSection />
       <NewsSection />
       <Testimonials />
-      <Footer />
+        <Footer />
     </main>
   );
 }
