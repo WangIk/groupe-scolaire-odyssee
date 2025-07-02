@@ -10,23 +10,32 @@ const AboutPage = () => {
     <>
       <Header />
       <main>
-        {/* Hero Section */}
-        <section className="relative h-[40vh] bg-primary">
+        {/* Hero Section - Image nette + overlay en dégradé */}
+        <section className="relative h-[60vh]">
           <Image
-            src="/assets/grid.png"
+            src="/images/ody.png" // 🖼️ Mets ici une image nette et bien choisie (pas floue)
             alt="Notre École"
             fill
-            className="object-cover opacity-40"
+            className="object-cover"
           />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <motion.div
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-transparent z-10" />
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center px-4 z-20">
+            <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-center text-white"
+              transition={{ duration: 0.8 }}
+              className="font-oswald text-5xl md:text-6xl font-bold mb-4 drop-shadow-xl"
             >
-              <h1 className="font-oswald text-5xl font-bold mb-4">Notre École</h1>
-              <p className="font-work-sans text-xl">Un lieu d'apprentissage, de partage et d'excellence</p>
-            </motion.div>
+              Notre École
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="font-work-sans text-lg md:text-xl text-white/90 max-w-2xl"
+            >
+              Un lieu d'apprentissage, de partage et d'excellence
+            </motion.p>
           </div>
         </section>
 
@@ -115,17 +124,17 @@ const AboutPage = () => {
             <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
               {[
                 {
-                  title: 'Excellence',
+                  title: 'Rigueur',
                   description: 'Nous visons l’excellence pédagogique et humaine dans tout ce que nous entreprenons.',
                   icon: '🎓',
                 },
                 {
-                  title: 'Égalité des chances',
+                  title: 'Travail',
                   description: 'Chaque élève est accompagné pour exprimer son plein potentiel.',
                   icon: '🤝',
                 },
                 {
-                  title: 'Épanouissement',
+                  title: 'Reussite',
                   description: 'Les activités scolaires et périscolaires favorisent un développement équilibré.',
                   icon: '🌱',
                 },
@@ -162,7 +171,7 @@ const AboutPage = () => {
               </p>
             </motion.div>
 
-            {/* Ajoutez ici les cartes de l'équipe si besoin */}
+            {/* Ajoute ici des cartes de l'équipe si nécessaire */}
           </div>
         </section>
       </main>

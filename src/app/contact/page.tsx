@@ -44,12 +44,7 @@ const ContactPage = () => {
       if (!response.ok) throw new Error('Erreur lors de l\'envoi du message');
 
       setStatus('success');
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
+      setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (error) {
       console.error('Erreur:', error);
       setStatus('error');
@@ -60,18 +55,21 @@ const ContactPage = () => {
     <>
       <Header />
       <main>
-        {/* Hero Section */}
-        <section className="relative h-[40vh] bg-gradient-to-r from-white via-gray-100 to-white">
+
+        {/* Hero Section avec fond image */}
+        <section
+          className="relative h-[40vh] bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/images/odyssee.png')" }}
+        >
+          <div className="absolute inset-0 bg-black/40" />
           <div className="absolute inset-0 flex items-center justify-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-center"
+              className="text-center text-white"
             >
-              <h1 className="font-oswald text-5xl font-bold mb-4 text-[#1D3557] mt-12">
-                Contactez-nous
-              </h1>
-              <p className="font-work-sans text-lg text-gray-700">Nous sommes à votre écoute</p>
+              <h1 className="font-oswald text-5xl font-bold mb-4">Contactez-nous</h1>
+              <p className="font-work-sans text-lg">Nous sommes à votre écoute</p>
             </motion.div>
           </div>
         </section>
@@ -80,6 +78,7 @@ const ContactPage = () => {
         <section className="py-20">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+
               {/* Infos de contact */}
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
@@ -90,7 +89,7 @@ const ContactPage = () => {
                 <div>
                   <h2 className="text-3xl font-oswald font-bold mb-6 text-[#1D3557]">Restons en contact</h2>
                   <p className="text-gray-600 font-work-sans">
-                    N'hésitez pas à nous contacter pour toute question scolaire. 
+                    N'hésitez pas à nous contacter pour toute question ou demande de devis. 
                     Notre équipe est à votre disposition pour vous accompagner.
                   </p>
                 </div>
@@ -189,7 +188,6 @@ const ContactPage = () => {
                     Message envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.
                   </div>
                 )}
-
                 {status === 'error' && (
                   <div className="mt-4 p-4 bg-red-50 text-red-700 rounded-xl">
                     Une erreur est survenue lors de l'envoi du message. Veuillez réessayer.
@@ -228,5 +226,4 @@ const ContactPage = () => {
     </>
   );
 };
-
 export default ContactPage;

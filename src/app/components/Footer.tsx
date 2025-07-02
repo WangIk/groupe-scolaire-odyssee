@@ -99,7 +99,7 @@ const Footer = () => {
                 </li>
                 <li className="flex items-start gap-2">
                   <HiOutlinePhone className="mt-1 text-[#D93030]" />
-                  <span>+212 5 22 48 25 40 / +212 6 16 96 65 09</span>
+                  <span>+242 05 585 02 02 / +242 04 061 34 48</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <HiOutlineMail className="mt-1 text-[#D93030]" />
