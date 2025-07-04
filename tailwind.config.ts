@@ -28,6 +28,7 @@ export default {
       },
       animation: {
         'float': 'float 3s ease-in-out infinite',
+        'pulse-slow': 'pulse 5s ease-in-out infinite',
       },
       keyframes: {
         float: {
@@ -42,3 +43,4 @@ export default {
   },
   plugins: [],
 } satisfies Config;
+

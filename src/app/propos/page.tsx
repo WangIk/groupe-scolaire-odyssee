@@ -10,10 +10,10 @@ const AboutPage = () => {
     <>
       <Header />
       <main>
-        {/* Hero Section - Image nette + overlay en dégradé */}
+        {/* Hero Section */}
         <section className="relative h-[60vh]">
           <Image
-            src="/images/ody.png" // 🖼️ Mets ici une image nette et bien choisie (pas floue)
+            src="/images/ody.png"
             alt="Notre École"
             fill
             className="object-cover"
@@ -43,7 +43,6 @@ const AboutPage = () => {
         <section className="py-20 bg-white">
           <div className="container mx-auto px-4 max-w-6xl">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Texte */}
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -64,28 +63,15 @@ const AboutPage = () => {
                 </div>
 
                 <div className="font-work-sans text-gray-600 space-y-4 text-lg leading-relaxed">
-                  <p>
-                    Notre école est un Groupe Scolaire Privé qui accueille des élèves de la crèche au collège,
-                    en passant par la maternelle et l’élémentaire.
-                  </p>
-                  <p>
-                    Visant l’excellence, le Groupe Scolaire L’Odyssée offre un programme d’enseignements et d’examens intensifs,
-                    émaillé par des activités extrascolaires et périscolaires.
-                  </p>
-                  <p>
-                    Ainsi, les parents et les enseignants se font mutuellement confiance et avancent vers le même but,
-                    tout en se penchant ensemble sur les difficultés et les capacités de l’élève afin qu’il puisse
-                    acquérir des savoirs et vivre l’égalité des chances.
-                  </p>
+                  <p>Notre école est un Groupe Scolaire Privé qui accueille des élèves de la crèche au collège, en passant par la maternelle et l’élémentaire.</p>
+                  <p>Visant l’excellence, le Groupe Scolaire L’Odyssée offre un programme d’enseignements et d’examens intensifs, émaillé par des activités extrascolaires et périscolaires.</p>
+                  <p>Ainsi, les parents et les enseignants se font mutuellement confiance et avancent vers le même but, tout en se penchant ensemble sur les difficultés et les capacités de l’élève afin qu’il puisse acquérir des savoirs et vivre l’égalité des chances.</p>
                   <div className="bg-yellow-50 p-6 rounded-lg border-l-4 border-yellow-400">
-                    <p className="font-semibold text-gray-800">
-                      Depuis 1995, L’Odyssée accompagne chaque enfant à devenir un citoyen épanoui, responsable et confiant.
-                    </p>
+                    <p className="font-semibold text-gray-800">Depuis 1995, L’Odyssée accompagne chaque enfant à devenir un citoyen épanoui, responsable et confiant.</p>
                   </div>
                 </div>
               </motion.div>
 
-              {/* Image */}
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -123,21 +109,9 @@ const AboutPage = () => {
 
             <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
               {[
-                {
-                  title: 'Rigueur',
-                  description: 'Nous visons l’excellence pédagogique et humaine dans tout ce que nous entreprenons.',
-                  icon: '🎓',
-                },
-                {
-                  title: 'Travail',
-                  description: 'Chaque élève est accompagné pour exprimer son plein potentiel.',
-                  icon: '🤝',
-                },
-                {
-                  title: 'Reussite',
-                  description: 'Les activités scolaires et périscolaires favorisent un développement équilibré.',
-                  icon: '🌱',
-                },
+                { title: 'Rigueur', description: 'Nous visons l’excellence pédagogique et humaine dans tout ce que nous entreprenons.', icon: '🎓' },
+                { title: 'Travail', description: 'Chaque élève est accompagné pour exprimer son plein potentiel.', icon: '🤝' },
+                { title: 'Reussite', description: 'Les activités scolaires et périscolaires favorisent un développement équilibré.', icon: '🌱' },
               ].map((value, index) => (
                 <motion.div
                   key={value.title}
@@ -156,24 +130,117 @@ const AboutPage = () => {
           </div>
         </section>
 
-        {/* Section Équipe */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <h2 className="text-4xl font-oswald font-bold mb-4">Notre Équipe</h2>
-              <p className="text-gray-600 font-work-sans text-lg max-w-2xl mx-auto">
-                Des éducateurs passionnés, investis et bienveillants
-              </p>
-            </motion.div>
+        {/* 🎯 Section Équipe */}
+{/* 🎯 Section Équipe - avec même tailles + dernière ligne centrée */}
+<section className="py-24 relative overflow-hidden bg-gradient-to-br from-white via-blue-50 to-white">
+  {/* Animation de fond doux */}
+  <div className="absolute inset-0 bg-gradient-to-r from-blue-100/30 via-transparent to-red-100/30 animate-pulse-slow z-0" />
 
-            {/* Ajoute ici des cartes de l'équipe si nécessaire */}
+  <div className="relative z-10 container mx-auto px-4">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="text-center mb-16"
+    >
+      <h2 className="text-4xl font-oswald font-bold mb-4">Notre Équipe</h2>
+      <p className="text-gray-600 font-work-sans text-lg max-w-2xl mx-auto">
+        Des éducateurs passionnés, investis et bienveillants
+      </p>
+    </motion.div>
+
+    {/* Grille globale */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-14 max-w-6xl mx-auto">
+      {/* Première ligne : 3 membres */}
+      {[
+        {
+          name: 'Mme Sophie Durand',
+          role: 'Directrice Générale',
+          quote: 'Accompagner chaque élève vers l’excellence.',
+          img: '/images/DG.png',
+        },
+        {
+          name: 'M. Alain Morel',
+          role: 'Directeur Pédagogique',
+          quote: 'Un cadre exigeant et bienveillant.',
+          img: '/images/DP.png',
+        },
+        {
+          name: 'Mme Nadia El Idrissi',
+          role: 'Responsable Administrative',
+          quote: 'L’accueil et l’écoute avant tout.',
+          img: '/images/DA.png',
+        },
+      ].map((member, idx) => (
+        <motion.div
+          key={idx}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: idx * 0.15, duration: 0.6, ease: 'easeOut' }}
+          viewport={{ once: true }}
+          className="text-center bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 group relative"
+        >
+          <div className="relative w-44 h-44 mx-auto mb-6 rounded-full overflow-hidden shadow-md">
+            <Image
+              src={member.img}
+              alt={member.name}
+              width={180}
+              height={180}
+              className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+            />
           </div>
-        </section>
+          <h3 className="text-lg font-bold font-oswald text-black">{member.name}</h3>
+          <p className="text-sm font-work-sans text-indigo-700 mt-1">{member.role}</p>
+          <p className="text-sm italic text-gray-500 mt-1 font-work-sans">"{member.quote}"</p>
+        </motion.div>
+      ))}
+
+      {/* Dernière ligne centrée */}
+      <div className="col-span-1 sm:col-span-2 lg:col-span-3 flex justify-center gap-14">
+        {[
+          {
+            name: 'Mme Claire Bouchard',
+            role: 'Responsable Financière',
+            quote: 'L’éveil en douceur.',
+            img: '/images/RF.png',
+          },
+          {
+            name: 'M. Karim Meziane',
+            role: 'Responsable Des Activités Scolaires',
+            quote: 'Former des esprits curieux et libres.',
+            img: '/images/RAS.png',
+          },
+        ].map((member, idx) => (
+          <motion.div
+            key={idx}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 + idx * 0.2, duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 group relative w-full max-w-sm"
+          >
+            <div className="relative w-44 h-44 mx-auto mb-6 rounded-full overflow-hidden shadow-md">
+              <Image
+                src={member.img}
+                alt={member.name}
+                width={180}
+                height={180}
+                className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+            <h3 className="text-lg font-bold font-oswald text-black">{member.name}</h3>
+            <p className="text-sm font-work-sans text-indigo-700 mt-1">{member.role}</p>
+            <p className="text-sm italic text-gray-500 mt-1 font-work-sans">"{member.quote}"</p>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
       </main>
       <Footer />
     </>
