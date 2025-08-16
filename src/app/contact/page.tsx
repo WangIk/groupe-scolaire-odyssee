@@ -101,7 +101,7 @@ const ContactPage = () => {
                     </div>
                     <div>
                       <h3 className="font-oswald font-semibold text-lg text-[#1D3557]">Téléphone</h3>
-                      <p className="text-gray-600 font-work-sans">+242 05 585 02 02</p>
+                      <p className="text-gray-600 font-work-sans">+242 06 585 02 02</p>
                       <p className="text-gray-600 font-work-sans">+242 04 061 34 48</p>
                     </div>
                   </div>
@@ -112,8 +112,8 @@ const ContactPage = () => {
                     </div>
                     <div>
                       <h3 className="font-oswald font-semibold text-lg text-[#1D3557]">Email</h3>
-                      <p className="text-gray-600 font-work-sans">contact@lodyssee.com</p>
-                      <p className="text-gray-600 font-work-sans">contact@lodyssee.com</p>
+                      <p className="text-gray-600 font-work-sans">contact@lodysse.com</p>
+                      <p className="text-gray-600 font-work-sans">contact@lodysse.com</p>
                     </div>
                   </div>
 
